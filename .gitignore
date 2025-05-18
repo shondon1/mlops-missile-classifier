@@ -1,0 +1,53 @@
+# === ENVIRONMENTS ===
+venv/
+.env
+*.env
+
+# === PYTHON CACHE ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# === MODEL FILES ===
+models/*.h5
+*.h5
+*.pb
+*.onnx
+
+# === LOGS / CHECKPOINTS ===
+*.log
+logs/
+checkpoints/
+
+# === DATA FILES ===
+*.csv
+*.tsv
+*.xlsx
+*.parquet
+data/
+train.csv
+test.csv
+
+# === IDE FILES ===
+.vscode/
+.idea/
+*.swp
+
+# === OS-SPECIFIC ===
+.DS_Store
+Thumbs.db
+
+# === TEST ===
+coverage/
+*.cover
+.cache/
+htmlcov/
+pytest_cache/
+
+# === DOCKER ===
+*.pid
+*.sock
+*.tar
+*.db
+docker-compose.override.yml
