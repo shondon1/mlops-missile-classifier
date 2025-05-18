@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## Phase 1: Data Exploration
 
 - Loaded and visualized telemetry data from `train.csv`
@@ -31,4 +30,3 @@
 - LSTM model significantly outperformed the baseline across all major metrics
 =======
 # mlops-missile-classifier
->>>>>>> 3b2a52a91f096dd8a7947b19ce7d0c58ee38384e
