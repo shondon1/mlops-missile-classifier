@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## Phase 1: Data Exploration
 
 - Loaded and visualized telemetry data from `train.csv`
@@ -28,3 +29,6 @@
 - Evaluated LSTM predictions on validation set using accuracy, precision, recall, F1-score, and ROC AUC
 - Compared results against a baseline classifier using an altitude threshold heuristic
 - LSTM model significantly outperformed the baseline across all major metrics
+=======
+# mlops-missile-classifier
+>>>>>>> 3b2a52a91f096dd8a7947b19ce7d0c58ee38384e
