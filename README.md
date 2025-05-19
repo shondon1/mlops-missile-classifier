@@ -1,32 +1,77 @@
-## Phase 1: Data Exploration
+# 🚀 Missile Reentry Phase Classifier
 
-- Loaded and visualized telemetry data from `train.csv`
-- Verified key columns: timestamp, position (lat/lon/alt), radiometric intensity, reentry label
-- No major missing values found (or [if any, list them])
-- Distribution of `reentry_phase`: [insert distribution here]
-- Feature ranges noted for normalization: altitude ranges from X to Y, etc.
+##  Project Overview
 
+This project implements a machine learning solution for classifying missile flight phases into reentry and non-reentry using telemetry data. It uses an LSTM neural network to process sequential data from missile tracks and follows MLOps best practices for scalable deployment.
 
-## Phase 2: Preprocessing & Feature Engineering
+### Features
+- LSTM-based classification of missile telemetry data
+- Dockerized deployment for portability
+- Kubernetes configuration for scalability
+- RESTful API for real-time predictions
+- Logging of inference times and predictions
 
-- Sorted sequences by `timestamp` and grouped by `track_id`
-- Encoded `sensor_id` with LabelEncoder
-- Normalized continuous features with StandardScaler
-- Created sequence-level inputs for LSTM with labels indicating reentry presence
-- Split data into training and validation sets
+---
 
-## Phase 3: LSTM Model Building
+##  Data Description
 
-- Designed a two-layer LSTM model with dropout and batch normalization for regularized sequence learning
-- Used binary crossentropy for classification and early stopping to minimize overfitting
-- Trained using ragged tensors to accommodate variable-length sequences
-- Model saved for later deployment using `model.save()`
+The model processes telemetry data from missile tracks, including:
+- Position coordinates (latitude, longitude, altitude)
+- Radiometric intensity
+- Sensor ID
+- Timestamps
 
+---
 
-## Phase 4: Model Evaluation and Baseline Comparison
+## Model Architecture
 
-- Evaluated LSTM predictions on validation set using accuracy, precision, recall, F1-score, and ROC AUC
-- Compared results against a baseline classifier using an altitude threshold heuristic
-- LSTM model significantly outperformed the baseline across all major metrics
-=======
-# mlops-missile-classifier
+The core of the solution is a multi-layer LSTM network that:
+- Handles variable-length telemetry sequences
+- Uses dropout (0.3) + batch normalization
+- Employs early stopping to prevent overfitting
+- Outperforms a baseline altitude threshold classifier
+
+---
+
+## Project Structure
+
+```text
+mlops-missile-classifier/
+├── api/
+│   └── app.py                # FastAPI endpoints
+├── kubernetes/
+│   ├── deployment.yaml       # Kubernetes deployment config
+│   └── service.yaml          # Kubernetes service config
+├── models/
+│   └── lstm_model.py         # LSTM model definition
+├── src/
+│   ├── preprocessing.py      # Preprocessing pipeline
+│   └── evaluate.py           # Evaluation script
+├── tests/
+│   └── test_api.py           # Unit tests for API
+├── Dockerfile                # Docker container setup
+├── requirements.txt          # Dependency list
+├── run.py                    # Inference / training script
+└── README.md                 # Documentation
+
+```
+Screenshots:
+![image](https://github.com/user-attachments/assets/a4c66e9b-7888-4b7b-8f8f-64926699f752)
+
+## Resources that I used:
+1. Claude AI
+2. ChatGPT
+3. https://www.datacamp.com/cheat-sheet/pandas-cheat-sheet-for-data-science-in-python
+4. https://github.com/rbhatia46/Data-Preprocessing-Template/blob/master/data_preprocessing_template.py
+5. https://www.youtube.com/watch?v=9zhrxE5PQgY&ab_channel=SirajRaval
+6. https://youtu.be/DQdB7wFEygo?si=ATKc-blQNfz7qEKw
+7. https://www.tensorflow.org/tutorials/structured_data/imbalanced_data
+8. https://scikit-learn.org/stable/modules/model_evaluation.html
+9. https://scikit-learn.org/stable/modules/preprocessing.html
+10. https://scikit-learn.org/stable/modules/preprocessing.html
+11. https://www.tensorflow.org/guide/checkpoint
+12. https://www.tensorflow.org/guide/keras
+13. https://www.datacamp.com/cheat-sheet/scikit-learn-cheat-sheet-python-machine-learning
+14. https://www.datacamp.com/cheat-sheet/keras-cheat-sheet-neural-networks-in-python
+
+PS: I enjoy this challenge!! I continue to build on to this or make a new one similar to this
