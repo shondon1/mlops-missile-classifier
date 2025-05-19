@@ -28,20 +28,20 @@ Achieves superior performance compared to a baseline altitude threshold classifi
 
 Project Structure:
 mlops-missile-classifier/
-├── api/                  # FastAPI implementation
-│   └── app.py            # API endpoints and logic
-├── kubernetes/           # Kubernetes deployment files
-│   ├── deployment.yaml   # Deployment configuration
-│   └── service.yaml      # Service configuration
-├── models/               # Model definition and saved models
-│   └── lstm_model.py     # LSTM implementation
-├── src/                  # Core source code
-│   ├── preprocessing.py  # Data preprocessing
-│   └── evaluate.py       # Model evaluation
-├── Dockerfile            # Docker configuration
-├── requirements.txt      # Dependencies
-├── run.py                # Training and inference script
-└── README.md             # Documentation
+  ├── api/                  # FastAPI implementation
+    │   └── app.py            # API endpoints and logic
+  ├── kubernetes/           # Kubernetes deployment files
+    │   ├── deployment.yaml   # Deployment configuration
+    │   └── service.yaml      # Service configuration
+  ├── models/               # Model definition and saved models
+  │   └── lstm_model.py     # LSTM implementation
+  ├── src/                  # Core source code
+  │   ├── preprocessing.py  # Data preprocessing
+  │   └── evaluate.py       # Model evaluation
+  ├── Dockerfile            # Docker configuration
+  ├── requirements.txt      # Dependencies
+  ├── run.py                # Training and inference script
+  └── README.md             # Documentation
 
 Setup and Installation
 Prerequisites
