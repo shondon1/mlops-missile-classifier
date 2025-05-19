@@ -1,32 +1,60 @@
-## Phase 1: Data Exploration
+Missile Reentry Phase Classifier
 
-- Loaded and visualized telemetry data from `train.csv`
-- Verified key columns: timestamp, position (lat/lon/alt), radiometric intensity, reentry label
-- No major missing values found (or [if any, list them])
-- Distribution of `reentry_phase`: [insert distribution here]
-- Feature ranges noted for normalization: altitude ranges from X to Y, etc.
+Project Overview
+This project implements a machine learning solution for classifying missile flight phases into reentry and non-reentry phases using telemetry data. The solution employs an LSTM neural network to process sequential data from missile tracks and follows MLOps best practices for deployment.
+Features
 
+LSTM-based classification of missile telemetry data
+Dockerized deployment for portability
+Kubernetes configuration for scalable deployment
+RESTful API for real-time predictions
+Logging of inference times and predictions
 
-## Phase 2: Preprocessing & Feature Engineering
+Data Description
+The model processes telemetry data from missile tracks, including:
 
-- Sorted sequences by `timestamp` and grouped by `track_id`
-- Encoded `sensor_id` with LabelEncoder
-- Normalized continuous features with StandardScaler
-- Created sequence-level inputs for LSTM with labels indicating reentry presence
-- Split data into training and validation sets
+Position coordinates (latitude, longitude, altitude)
+Radiometric intensity
+Sensor ID
+Timestamps
 
-## Phase 3: LSTM Model Building
+Model Architecture
+The core of the solution is a multi-layer LSTM network that: 
 
-- Designed a two-layer LSTM model with dropout and batch normalization for regularized sequence learning
-- Used binary crossentropy for classification and early stopping to minimize overfitting
-- Trained using ragged tensors to accommodate variable-length sequences
-- Model saved for later deployment using `model.save()`
+Handles variable-length sequences of telemetry data
+Uses dropout (0.3) and batch normalization for regularization
+Employs early stopping to prevent overfitting
+Achieves superior performance compared to a baseline altitude threshold classifier
 
+Project Structure
+mlops-missile-classifier/
+├── api/                  # FastAPI implementation
+│   └── app.py            # API endpoints and logic
+├── kubernetes/           # Kubernetes deployment files
+│   ├── deployment.yaml   # Deployment configuration
+│   └── service.yaml      # Service configuration
+├── models/               # Model definition and saved models
+│   └── lstm_model.py     # LSTM implementation
+├── src/                  # Core source code
+│   ├── preprocessing.py  # Data preprocessing
+│   └── evaluate.py       # Model evaluation
+├── Dockerfile            # Docker configuration
+├── requirements.txt      # Dependencies
+├── run.py                # Training and inference script
+└── README.md             # Documentation
 
-## Phase 4: Model Evaluation and Baseline Comparison
+Setup and Installation
+Prerequisites
 
-- Evaluated LSTM predictions on validation set using accuracy, precision, recall, F1-score, and ROC AUC
-- Compared results against a baseline classifier using an altitude threshold heuristic
-- LSTM model significantly outperformed the baseline across all major metrics
-=======
-# mlops-missile-classifier
+Python 3.9+
+TensorFlow 2.8+
+Docker
+Kubernetes/Minikube (for deployment)
+
+Local Development: 
+
+Clone the repository:
+git clone https://github.com/shondon1/mlops-missile-classifier.git
+cd mlops-missile-classifier
+
+PS: I enjoy this challenge!! I continue to build on to this or make a new one similar to this
