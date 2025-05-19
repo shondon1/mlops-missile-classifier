@@ -57,4 +57,7 @@ Clone the repository:
 git clone https://github.com/shondon1/mlops-missile-classifier.git
 cd mlops-missile-classifier
 
+Screenshots:
+![image](https://github.com/user-attachments/assets/a4c66e9b-7888-4b7b-8f8f-64926699f752)
+
 PS: I enjoy this challenge!! I continue to build on to this or make a new one similar to this
