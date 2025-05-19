@@ -1,7 +1,7 @@
 import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dense, Dropout, BatchNormalization
-from tensorflow.keras.callbacks import EarlyStopping
+from keras.models import Sequential
+from keras.layers import LSTM, Dense, Dropout, BatchNormalization
+from keras.callbacks import EarlyStopping
 
 def build_lstm_model(input_shape: tuple) -> tf.keras.Model:
     """
@@ -15,7 +15,7 @@ def build_lstm_model(input_shape: tuple) -> tf.keras.Model:
     # First LSTM layer with return_sequences=True to stack another LSTM
     model.add(LSTM(64, return_sequences=True, input_shape=input_shape))
     model.add(Dropout(0.3))  # Helps prevent overfitting
-    model.add(BatchNormalization())  # Speeds up and stabilizes training
+    # model.add(BatchNormalization())  # Speeds up and stabilizes training
     
     # Second LSTM layer reduces sequence to vector
     model.add(LSTM(32))
@@ -42,11 +42,13 @@ def train_lstm_model(
     y_val: list,
     epochs: int = 20
 ) -> tuple[tf.keras.Model, tf.keras.callbacks.History]:
-    """
-    Trains the LSTM model using ragged tensors for variable sequence lengths.
-    
-    Includes early stopping to prevent overfitting and reduce unnecessary compute time.
-    """
+
+    import numpy as np  # Add if not already
+    from keras.callbacks import EarlyStopping
+
+    y_train = np.array(y_train)
+    y_val = np.array(y_val)
+
     early_stop = EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=True)
 
     history = model.fit(
@@ -59,6 +61,7 @@ def train_lstm_model(
     )
 
     return model, history
+
 
 def save_model(model: tf.keras.Model, path: str = "models/reentry_lstm.h5") -> None:
     """

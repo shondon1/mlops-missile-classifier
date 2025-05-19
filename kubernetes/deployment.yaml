@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: missile-api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: missile-api
+  template:
+    metadata:
+      labels:
+        app: missile-api
+    spec:
+      containers:
+      - name: missile-api
+        image: missile-api:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8000
