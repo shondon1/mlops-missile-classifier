@@ -26,7 +26,7 @@ Uses dropout (0.3) and batch normalization for regularization
 Employs early stopping to prevent overfitting
 Achieves superior performance compared to a baseline altitude threshold classifier
 
-Project Structure
+Project Structure:
 mlops-missile-classifier/
 ├── api/                  # FastAPI implementation
 │   └── app.py            # API endpoints and logic
