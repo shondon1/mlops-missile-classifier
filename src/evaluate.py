@@ -21,7 +21,7 @@ def main():
     """
     
     # ====== STEP 1: Load Validation Data ======
-    print("📂 Loading validation data...")
+    print("Loading validation data...")
     # We only need validation set for evaluation
     _, X_val, _, y_val = preprocess_train_data("data/train.csv")
     print(f"Loaded {len(X_val)} validation sequences")
@@ -29,14 +29,14 @@ def main():
     # ====== STEP 2: Load Trained Model ======
     model_path = "models/reentry_lstm.h5"
     if not os.path.exists(model_path):
-        raise FileNotFoundError(f"❌ Model file not found at: {model_path}")
-    print("✅ Model found. Loading...")
+        raise FileNotFoundError(f" Model file not found at: {model_path}")
+    print("Model found. Loading...")
 
     model = load_model(model_path)
     print(f"Model loaded: {model.name}")
 
     # ====== STEP 3: Make Predictions ======
-    print("🔍 Making predictions...")
+    print(" Making predictions...")
     # Use ragged tensors to handle variable-length sequences
     y_pred_probs = model.predict(tf.ragged.constant(X_val)).flatten()
     # Apply threshold of 0.5 to get binary predictions
@@ -57,9 +57,9 @@ def main():
         auc_str = f"{auc:.4f}"
     else:
         auc = None
-        auc_str = "⚠️ Not computed (only one class in validation data)"
+        auc_str = "Not computed (only one class in validation data)"
 
-    print("\n📊 LSTM Model Performance:")
+    print("\n LSTM Model Performance:")
     print(f"Accuracy  : {accuracy:.4f}  # Percentage of correct predictions")
     print(f"Precision : {precision:.4f}  # Of predicted reentries, how many were correct")
     print(f"Recall    : {recall:.4f}  # Of actual reentries, how many were detected")
@@ -81,14 +81,14 @@ def main():
     baseline_recall = recall_score(y_val, baseline_preds)
     baseline_f1 = f1_score(y_val, baseline_preds)
 
-    print("\n🧪 Baseline Threshold Model Performance:")
+    print("\n Baseline Threshold Model Performance:")
     print(f"Accuracy  : {baseline_accuracy:.4f}")
     print(f"Precision : {baseline_precision:.4f}")
     print(f"Recall    : {baseline_recall:.4f}")
     print(f"F1 Score  : {baseline_f1:.4f}")
 
     # Calculate and display improvements over baseline
-    print("\n📈 Improvement Over Baseline:")
+    print("\n Improvement Over Baseline:")
     print(f"Accuracy Δ : {accuracy - baseline_accuracy:+.4f}")
     print(f"Precision Δ: {precision - baseline_precision:+.4f}")
     print(f"Recall Δ   : {recall - baseline_recall:+.4f}")

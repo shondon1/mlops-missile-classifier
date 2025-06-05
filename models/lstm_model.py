@@ -2,6 +2,7 @@ import tensorflow as tf
 from keras.models import Sequential
 from keras.layers import LSTM, Dense, Dropout, BatchNormalization
 from keras.callbacks import EarlyStopping
+import numpy as np  # Add if not already
 
 def build_lstm_model(input_shape: tuple) -> tf.keras.Model:
     """
@@ -43,8 +44,6 @@ def train_lstm_model(
     epochs: int = 20
 ) -> tuple[tf.keras.Model, tf.keras.callbacks.History]:
 
-    import numpy as np  # Add if not already
-    from keras.callbacks import EarlyStopping
 
     y_train = np.array(y_train)
     y_val = np.array(y_val)

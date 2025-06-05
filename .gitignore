@@ -21,13 +21,11 @@ logs/
 checkpoints/
 
 # === DATA FILES ===
-*.csv
 *.tsv
 *.xlsx
 *.parquet
 data/
-train.csv
-test.csv
+
 
 # === IDE FILES ===
 .vscode/
