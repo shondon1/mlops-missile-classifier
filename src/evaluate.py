@@ -21,7 +21,7 @@ def main():
     """
     
     # ====== STEP 1: Load Validation Data ======
-    print("📂 Loading validation data...")
+    print(" Loading validation data...")
     # We only need validation set for evaluation
     _, X_val, _, y_val = preprocess_train_data("data/train.csv")
     print(f"Loaded {len(X_val)} validation sequences")
